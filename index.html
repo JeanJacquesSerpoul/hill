@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Hill Hole Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.dom.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #add8e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+            color: #333;
+        }
+        /* Style pour le conteneur du canvas et des contrôles */
+        #game-container {
+            /* position: relative; /* Plus nécessaire pour positionner les contrôles */
+            display: flex;
+            flex-direction: column; /* Empile canvas et contrôles verticalement */
+            align-items: center; /* Centre les éléments horizontalement */
+            gap: 15px; /* Ajoute de l'espace ENTRE le canvas et les contrôles */
+        }
+        /* Style pour le canvas p5 */
+        canvas {
+            display: block;
+            border: 1px solid #ccc;
+            touch-action: none;
+        }
+        /* Style pour les contrôles (sliders) */
+        .controls {
+            /* position: absolute; Supprimé */
+            /* bottom: 10px; Supprimé */
+            /* left: 10px; Supprimé */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            /* Optionnel: changer la direction si on veut les contrôles en ligne */
+            /* flex-direction: row; */
+            /* flex-wrap: wrap; */ /* Permet aux éléments d'aller à la ligne si pas assez de place */
+            /* justify-content: center; */
+            flex-direction: column; /* Gardons-les en colonne pour l'instant */
+            gap: 5px;
+            font-size: 0.8em;
+            width: 80%; /* Prend 80% de la largeur du conteneur */
+            max-width: 400px; /* Limite la largeur maximale */
+            box-sizing: border-box; /* Inclut padding dans la largeur */
+        }
+         .controls label {
+            display: block;
+         }
+         /* Ajustement pour mobile si les sliders prennent trop de place */
+         @media (max-width: 450px) {
+            .controls {
+                 width: 90%;
+                 font-size: 0.7em;
+                 padding: 5px;
+            }
+            .controls input[type="range"] {
+                width: 100px; /* Réduire la largeur des sliders eux-mêmes */
+            }
+         }
+
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Le canvas p5 sera inséré ici par le script -->
+        <!-- Les contrôles viendront après le canvas dans le flux normal -->
+        <div class="controls">
+            <div> <!-- Groupe pour la hauteur -->
+                <label for="hillHeightSlider">Hauteur Colline:</label>
+                <input type="range" id="hillHeightSlider" min="50" max="300" value="150">
+            </div>
+            <div> <!-- Groupe pour la profondeur -->
+                <label for="holeDepthSlider">Profondeur Trou:</label>
+                <input type="range" id="holeDepthSlider" min="10" max="50" value="30">
+            </div>
+             <div> <!-- Groupe pour la largeur -->
+                <label for="holeWidthSlider">Largeur Trou:</label>
+                <input type="range" id="holeWidthSlider" min="30" max="100" value="50">
+            </div>
+        </div>
+    </div>
+
+    <script src="sketch.js?v=1.0.4"></script>
+</body>
+</html>
